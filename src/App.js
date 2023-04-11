@@ -1,8 +1,9 @@
-import AppRoutes from "./Routes/AppRoutes";
+import AppRouter from "./Routes/AppRoutes";
 
 function App() {
+  const title = 'Tipo Equipo'
   return (
-    <AppRoutes />
+    <AppRouter />
   );
 }
 

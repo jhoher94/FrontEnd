@@ -1,29 +1,29 @@
 import React from 'react'
-import NavBar from '../Components/ui/NavBar'
 import { Route, Routes } from 'react-router-dom'
-import NotFound from '../Components/ui/NotFound'
-import TipoEquipos from '../Components/TipoEquipos'
 import Estados from '../Components/Estados'
+import Inventario from '../Components/Inventarios'
 import Marcas from '../Components/Marcas'
-import Inventarios from '../Components/Inventarios'
-import Usuarios from '../Components/Usuarios'
+import TipoEquipos from '../Components/TipoEquipos'
 import Footer from '../Components/ui/Footer'
+import NavBar from '../Components/ui/NavBar'
+import NotFound from '../Components/ui/NotFound'
+import Usuarios from '../Components/Usuarios'
 
-export default function AppRoutes() {
+export default function AppRouter() {
   return (
     <>
-        <NavBar className= 'container' />
-        <div>
-        <Routes>
-            <Route path='/' element={<TipoEquipos />}/>
-            <Route path='/usuario' element={<Usuarios />} />
-            <Route path='/marcas' element={<Marcas />} />
-            <Route path='/estado' element={<Estados/>}/>
-            <Route path='/inventario' element={<Inventarios/>}/>
-            <Route path='*' element={<NotFound/>} />
-        </Routes>
+        <NavBar />
+        <div className='container'>
+            <Routes>
+                <Route path='/' element={<TipoEquipos/>} />
+                <Route path='/estados' element={<Estados />} />
+                <Route path='/usuarios' element={<Usuarios />} />
+                <Route path='/marcas' element={<Marcas/> } />
+                <Route path='/inventario' element={<Inventario />} />
+                <Route path='*' element={<NotFound />}/>
+            </Routes>
         </div>
-        <Footer className='container' />
+        <Footer />
     </>
   )
 }
