@@ -1,10 +1,10 @@
-export default function ModalEdit({
+export default function ModalEditEstados({
     title,
     closeModal,
     handleChange,
-    tipoEquipo,
+    estadoEquipo,
     loadingSave,
-    editTipoEquipo,
+    editEstado,
 }) {
 
   
@@ -36,7 +36,7 @@ export default function ModalEdit({
                 id="recipient-name"
                 name="nombre"
                 onChange={handleChange}
-                value={tipoEquipo.nombre}
+                value={estadoEquipo.nombre}
               />
             </div>
             <div className="mb-3">
@@ -49,7 +49,7 @@ export default function ModalEdit({
                     id="status"
                     name="estado"
                     onChange={handleChange}
-                    value={tipoEquipo.estado}
+                    value={estadoEquipo.estado}
                 >
                 <option value={false}>Inactivo</option>
                 <option value={true}>Activo</option>
@@ -87,8 +87,8 @@ export default function ModalEdit({
             <button 
               type="button" 
               className="btn btn-primary"
-              onClick={editTipoEquipo}
-              disabled={tipoEquipo.nombre.length === 0}
+              onClick={editEstado}
+              disabled={estadoEquipo.nombre.length === 0}
             >
             Enviar
             </button>

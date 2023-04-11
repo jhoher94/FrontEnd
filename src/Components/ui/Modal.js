@@ -6,8 +6,9 @@ export default function Modal({
     handleChange,
     tipoEquipo,
     loadingSave,
-    saveTipoEquipo
+    saveTipoEquipo,
 }) {
+
   return (
     <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div className="modal-dialog">
@@ -72,7 +73,7 @@ export default function Modal({
               type="button" 
               className="btn btn-primary"
               onClick={saveTipoEquipo}
-              disabled={tipoEquipo.nombre.length == 0}
+              disabled={tipoEquipo.nombre.length === 0}
             >
             Enviar
             </button>

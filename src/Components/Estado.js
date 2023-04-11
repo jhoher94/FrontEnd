@@ -1,29 +1,29 @@
 import dayjs from 'dayjs'
 import React, { useEffect, useState } from 'react'
-import { createMarca, getMarcas, editarMarca } from '../Services/MarcasService'
-import Modal from './ui/ModalMarcas'
-import ModalEdit from './ui/ModalEditMarcas'
+import { createEstado, getEstados, editarEstado } from '../Services/EstadoService'
+import Modal from './ui/ModalEstado'
+import ModalEdit from './ui/ModalEditEstados'
 
-export default function Marcas() {
-const title= 'Marca'
-const [marcas, setMarcas] = useState([])
+export default function Estados() {
+const title= 'Estado'
+const [estados, setEstados] = useState([])
 const [query, setQuery] = useState(true)
 const [loading, setLoading] = useState(true)
 const [error, setError]= useState(false)
-const [marca, setMarca] = useState({
+const [estado, setEstado] = useState({
   nombre:''
 })
 const [loadingSave, setLoadingSave] = useState(false)
 
 const [id, setId] = useState('')
 
-const listMarcas = async () => {
+const listEstados = async () => {
   try{
     setError(false)
     setLoading(true)
-    const { data } = await getMarcas(query)
+    const { data } = await getEstados(query)
     console.log(data)
-    setMarcas(data)
+    setEstados(data)
     
     setTimeout(() => {
       setLoading(false)
@@ -37,7 +37,7 @@ const listMarcas = async () => {
 }
 
 useEffect(() => {
-  listMarcas()
+  listEstados()
 }, [query])
 
 const changeSwitch = () => {
@@ -45,20 +45,20 @@ const changeSwitch = () => {
 }
 
 const handleChange = (e) => {
-  setMarca({
-    ...marca,
+  setEstado({
+    ...estado,
     [e.target.name]: e.target.value
   })
 }
 
-const saveMarca = async () => {
+const saveEstado = async () => {
   try{
     setError(false)
     setLoadingSave(true)
-    const response = await createMarca(marca)
+    const response = await createEstado(estado)
     console.log(response)
-    setMarca({nombre: ''})
-    listMarcas()
+    setEstado({nombre: ''})
+    listEstados()
     setTimeout(() => {
       setLoadingSave(false)
     }, 500)
@@ -70,25 +70,25 @@ const saveMarca = async () => {
 }
 
 const closeModal = () => {
-  setMarca({nombre: ''})
+  setEstado({nombre: ''})
   if(id)setId('')
 }
 
-const selectMarca = (evt) => {
+const selectEstado = (evt) => {
   evt.preventDefault()
   setId(evt.target.id)
-  const tEq = marcas.filter(marca => marca._id === evt.target.id)
-  setMarca({...tEq[0]})
+  const tEq = estados.filter(estado => estado._id === evt.target.id)
+  setEstado({...tEq[0]})
 }
 
-const editMarca = async () => {
+const editEstado = async () => {
   try{
     setError(false)
     setLoadingSave(true)
-    const response = await editarMarca(id, marca)
+    const response = await editarEstado(id, estado)
     console.log(response)
-    setMarca({nombre: ''})
-    listMarcas()
+    setEstado({nombre: ''})
+    listEstados()
     setTimeout(() => {
       setLoadingSave(false)
     }, 500)
@@ -102,21 +102,21 @@ const editMarca = async () => {
   return (
     <>
         <ModalEdit 
-          modulo= 'marcas'
+          modulo= 'estados'
           title={title}
           closeModal={closeModal}
           handleChange={handleChange}
-          marca={marca}
+          marca={estado}
           loadingSave={loadingSave}
-          editMarca={editMarca}
+          editMarca={editEstado}
         />
         <Modal 
           title={title}
           closeModal={closeModal}
           handleChange={handleChange}
-          marca={marca}
+          marca={estado}
           loadingSave={loadingSave}
-          saveMarca={saveMarca}
+          saveMarca={saveEstado}
         />
           <div className="form-check form-switch">
             <input 
@@ -175,22 +175,22 @@ const editMarca = async () => {
               </thead>
               <tbody>
                 {
-                  Object.values (marcas).map((marca, index) => {
+                  Object.values (estados).map((estado, index) => {
                     return (
-                      <tr key={marca._id}>
+                      <tr key={estado._id}>
                         <th scope="row">{index + 1}</th>
-                        <td>{marca.nombre}</td>
-                        <td>{marca.estado ? 'Activo' : 'Inactivo'}</td>
-                        <td>{dayjs(marca.fechaCreacion).format('YYYY-MM-DD')}</td>
-                        <td>{dayjs(marca.fechaActualizacion).format('YYYY-MM-DD')}</td>
+                        <td>{estado.nombre}</td>
+                        <td>{estado.estado ? 'Activo' : 'Inactivo'}</td>
+                        <td>{dayjs(estado.fechaCreacion).format('YYYY-MM-DD')}</td>
+                        <td>{dayjs(estado.fechaActualizacion).format('YYYY-MM-DD')}</td>
                         <td>
                           <button 
-                            onClick={selectMarca}
+                            onClick={selectEstado}
                             type="button" 
                             className="btn btn-success"
                             data-bs-toggle="modal" 
                             data-bs-target="#exampleModalEdit" 
-                            id={marca._id}
+                            id={estado._id}
                           >
                             Editar
                           </button>

@@ -1,15 +1,16 @@
-export default function ModalEdit({
+import React from 'react'
+
+export default function ModalEstados({
     title,
     closeModal,
     handleChange,
-    tipoEquipo,
+    estadoEquipo,
     loadingSave,
-    editTipoEquipo,
+    saveEstado,
 }) {
 
-  
   return (
-    <div className="modal fade" id="exampleModalEdit" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div className="modal-dialog">
       <div className="modal-content">
         <div className="modal-header">
@@ -36,24 +37,8 @@ export default function ModalEdit({
                 id="recipient-name"
                 name="nombre"
                 onChange={handleChange}
-                value={tipoEquipo.nombre}
+                value={estadoEquipo.nombre}
               />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="status" 
-              className="col-form-label">
-                Estado:
-              </label>
-              <select 
-                    className="form-control" 
-                    id="status"
-                    name="estado"
-                    onChange={handleChange}
-                    value={tipoEquipo.estado}
-                >
-                <option value={false}>Inactivo</option>
-                <option value={true}>Activo</option>
-              </select>
             </div>
           </form>
         </div>
@@ -87,8 +72,8 @@ export default function ModalEdit({
             <button 
               type="button" 
               className="btn btn-primary"
-              onClick={editTipoEquipo}
-              disabled={tipoEquipo.nombre.length === 0}
+              onClick={saveEstado}
+              disabled={estadoEquipo.nombre.length === 0}
             >
             Enviar
             </button>
