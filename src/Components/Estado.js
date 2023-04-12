@@ -106,17 +106,17 @@ const editEstado = async () => {
           title={title}
           closeModal={closeModal}
           handleChange={handleChange}
-          marca={estado}
+          estadoEquipo={estado}
           loadingSave={loadingSave}
-          editMarca={editEstado}
+          editEstado={editEstado}
         />
         <Modal 
           title={title}
           closeModal={closeModal}
           handleChange={handleChange}
-          marca={estado}
+          estadoEquipo={estado}
           loadingSave={loadingSave}
-          saveMarca={saveEstado}
+          saveEstado={saveEstado}
         />
           <div className="form-check form-switch">
             <input 

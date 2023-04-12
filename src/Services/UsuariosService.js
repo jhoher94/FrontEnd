@@ -1,8 +1,8 @@
 import { axiosConfig } from "../Configuration/AxiosConfig";
 
 // obtener los tipos de equipos
-const getEstados = (estado) => {
-    return axiosConfig.get('estadoequipos?estado='+estado, {
+const getUsuarios = (estado) => {
+    return axiosConfig.get('usuarios?estado='+estado, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -11,16 +11,16 @@ const getEstados = (estado) => {
 
 
 // crear tipo equipo
-const createEstado = (data = {}) => {
-    return axiosConfig.post('estadoequipos', data, {
+const createUsuario = (data = {}) => {
+    return axiosConfig.post('usuarios', data, {
         headers: {
             'Content-Type': 'application/json'
         }
     })
 }
 
-const editarEstado = (tipoId, data) => {
-  return axiosConfig.put(`estadoequipos?id=${tipoId}`, data, {
+const editarUsuario = (tipoId, data) => {
+  return axiosConfig.put(`usuarios?id=${tipoId}`, data, {
    headers: {
       'Content-type': 'application/json'
    }
@@ -38,8 +38,8 @@ const borrarTipoEquipo = (tipoId) => {
 
 
 export {
-    getEstados,
-    createEstado,
-    editarEstado,
+    getUsuarios,
+    createUsuario,
+    editarUsuario,
     borrarTipoEquipo
 }
